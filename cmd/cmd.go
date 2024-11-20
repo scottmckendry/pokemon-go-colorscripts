@@ -1,19 +1,32 @@
 package cmd
 
 import (
+	"embed"
 	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
 )
 
-var cmd = &cobra.Command{
-	Use: "pokemon-go-colorscripts",
+var (
+	//go:embed pokemon-colorscripts/colorscripts/*
+	colorscripts embed.FS
 
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("WIP")
-	},
-}
+	cmd = &cobra.Command{
+		Use: "pokemon-go-colorscripts",
+
+		Run: func(cmd *cobra.Command, args []string) {
+			file_content, err := colorscripts.ReadFile(
+				"pokemon-colorscripts/colorscripts/small/regular/charmander",
+			)
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(1)
+			}
+			fmt.Println(string(file_content))
+		},
+	}
+)
 
 func Execute() {
 	err := cmd.Execute()
