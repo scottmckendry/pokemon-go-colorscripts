@@ -16,7 +16,16 @@ You may be wondering why you would use this over the original. Here are a few re
 
 ## 📦 Installation
 
-_TODO_
+**Pre-built binaries**
+
+You can download pre-built binaries from the [releases page](https://github.com/scottmckendry/pokemon-go-colorscripts/releases).
+
+**Build from source**
+
+```sh
+git clone https://github.com/scottmckendry/pokemon-go-colorscripts --recurse-submodules && cd pokemon-go-colorscripts
+go install .
+```
 
 ## 🚀 Usage
 
