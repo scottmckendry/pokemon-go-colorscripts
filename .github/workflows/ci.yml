@@ -1,0 +1,36 @@
+name: CI
+on:
+    push:
+
+jobs:
+    release-please:
+        name: Release
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'
+        outputs:
+            release_created: ${{ steps.release-please.outputs.release_created }}
+        steps:
+            - uses: googleapis/release-please-action@v4
+              id: release-please
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  release-type: go
+
+    goreleaser:
+        name: Publish
+        if: github.ref_type == 'tag'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  submodules: true
+            - name: Setup Go
+              uses: actions/setup-go@v5
+            - name: Run GoReleaser
+              uses: goreleaser/goreleaser-action@v5
+              with:
+                  version: "~> v1"
+                  args: release --clean
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
