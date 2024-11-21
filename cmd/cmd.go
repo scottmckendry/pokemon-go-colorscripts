@@ -129,6 +129,7 @@ func showPokemonByName(flags flags) {
 
 	pokemon_file, _ := colorscripts.ReadFile(path)
 	fmt.Print(string(pokemon_file))
+	os.Exit(0)
 }
 
 // Show a random pokemon
