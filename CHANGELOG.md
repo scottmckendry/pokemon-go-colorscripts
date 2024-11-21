@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.1.0...v0.1.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* only show help when required flags are missing ([32f4d97](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/32f4d97908d3adf701eb9162c62b777126a405d0))
+
 ## 0.1.0 (2024-11-21)
 
 
