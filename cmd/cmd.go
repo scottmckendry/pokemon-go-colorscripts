@@ -37,6 +37,9 @@ var cmd = &cobra.Command{
 		if flags.random {
 			showRandomPokemon(flags)
 		}
+
+		cmd.Help()
+		os.Exit(1)
 	},
 }
 
@@ -49,13 +52,13 @@ func Execute() {
 
 func init() {
 	cmd.Flags().BoolP("list", "l", false, "list all available pokemon")
-	cmd.Flags().
-		StringP("name", "n", "", "Select a pokemon by name. Generally spelled like in the games.a few exceptions are nidoran-f, nidoran-m, mr-mime, farfetchd, flabebe type-null etc. Perhaps grep the output of --list if in doubt.")
 	cmd.Flags().StringP("form", "f", "", "Show an alternate form of a pokemon")
 	cmd.Flags().Bool("no-title", false, "Do not display pokemon name")
 	cmd.Flags().BoolP("shiny", "s", false, "Show the shiny version of a pokemon instead")
 	cmd.Flags().BoolP("big", "b", false, "Show a larger version of the sprite")
 	cmd.Flags().BoolP("random", "r", false, "display a random pokemon")
+	cmd.Flags().
+		StringP("name", "n", "", "Select a pokemon by name. Generally spelled like in the games.a few exceptions are nidoran-f, nidoran-m, mr-mime, farfetchd, flabebe type-null etc. Perhaps grep the output of --list if in doubt.")
 }
 
 // Unmarshall the pokemon.json file into a slice of Pokemon structs and a map of Pokemon structs for easy lookup
