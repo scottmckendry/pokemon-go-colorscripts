@@ -3,7 +3,9 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"os"
+	"slices"
 
 	"github.com/spf13/cobra"
 )
@@ -13,14 +15,13 @@ var cmd = &cobra.Command{
 
 	Run: func(cmd *cobra.Command, args []string) {
 		flags := flags{
-			list:          mustGetBool(cmd, "list"),
-			name:          mustGetString(cmd, "name"),
-			form:          mustGetString(cmd, "form"),
-			noTitle:       mustGetBool(cmd, "no-title"),
-			shiny:         mustGetBool(cmd, "shiny"),
-			big:           mustGetBool(cmd, "big"),
-			random:        mustGetBool(cmd, "random"),
-			randomByNames: mustGetString(cmd, "random-by-names"),
+			list:    mustGetBool(cmd, "list"),
+			name:    mustGetString(cmd, "name"),
+			form:    mustGetString(cmd, "form"),
+			noTitle: mustGetBool(cmd, "no-title"),
+			shiny:   mustGetBool(cmd, "shiny"),
+			big:     mustGetBool(cmd, "big"),
+			random:  mustGetBool(cmd, "random"),
 		}
 
 		loadPokemon()
@@ -29,28 +30,13 @@ var cmd = &cobra.Command{
 			listPokemon()
 		}
 
-		size := "small"
-		if flags.big {
-			size = "large"
+		if flags.name != "" {
+			showPokemonByName(flags)
 		}
 
-		parent := "regular"
-		if flags.shiny {
-			parent = "shiny"
+		if flags.random {
+			showRandomPokemon(flags)
 		}
-
-		file_content, err := colorscripts.ReadFile(
-			"pokemon-colorscripts/colorscripts/" + size + "/" + parent + "/" + flags.name,
-		)
-		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		}
-
-		if !flags.noTitle {
-			fmt.Println(flags.name)
-		}
-		fmt.Print(string(file_content))
 	},
 }
 
@@ -70,8 +56,15 @@ func init() {
 	cmd.Flags().BoolP("shiny", "s", false, "Show the shiny version of a pokemon instead")
 	cmd.Flags().BoolP("big", "b", false, "Show a larger version of the sprite")
 	cmd.Flags().BoolP("random", "r", false, "display a random pokemon")
-	cmd.Flags().
-		StringP("random-by-names", "R", "", "Show a random pokemon chosen in the provided list of names. This list is in form (poke_1,poke_2,...,poke_n) only separated by commas WITHOUT whitespace (e.g. charmander,bulbasaur,squirtle)")
+}
+
+// Unmarshall the pokemon.json file into a slice of Pokemon structs and a map of Pokemon structs for easy lookup
+func loadPokemon() {
+	json.Unmarshal(pokemon_json, &pokemon_list)
+	pokemon_map = make(map[string]pokemon)
+	for _, pokemon := range pokemon_list {
+		pokemon_map[pokemon.Name] = pokemon
+	}
 }
 
 // Print a list of all available pokemon
@@ -82,13 +75,72 @@ func listPokemon() {
 	os.Exit(0)
 }
 
-// Unmarshall the pokemon.json file into a slice of Pokemon structs and a map of Pokemon structs for easy lookup
-func loadPokemon() {
-	json.Unmarshal(pokemon_json, &pokemon_list)
-	pokemon_map = make(map[string]pokemon)
-	for _, pokemon := range pokemon_list {
-		pokemon_map[pokemon.Name] = pokemon
+// Show a pokemon by name
+func showPokemonByName(flags flags) {
+	sizeSubdir := "small"
+	if flags.big {
+		sizeSubdir = "large"
 	}
+
+	pokemon, ok := pokemon_map[flags.name]
+	if !ok {
+		fmt.Printf("Invald pokemon %s\n", flags.name)
+		os.Exit(1)
+	}
+
+	shinySubdir := "regular"
+	if flags.shiny {
+		shinySubdir = "shiny"
+	}
+
+	if flags.form != "" {
+		if slices.Contains(pokemon.Forms, flags.form) {
+			flags.name += "-" + flags.form
+		} else {
+			if len(pokemon.Forms) == 1 {
+				fmt.Printf("No alternate forms available for %s\n", flags.name)
+			} else {
+				fmt.Printf("Avaliable forms for %s are:\n", flags.name)
+				for _, form := range pokemon.Forms {
+					fmt.Println(form)
+				}
+			}
+			os.Exit(1)
+		}
+	}
+
+	if !flags.noTitle {
+		if flags.shiny {
+			fmt.Println(flags.name + " (shiny)")
+		} else {
+			fmt.Println(flags.name)
+		}
+	}
+
+	path := fmt.Sprintf(
+		"pokemon-colorscripts/colorscripts/%s/%s/%s",
+		sizeSubdir,
+		shinySubdir,
+		flags.name,
+	)
+
+	pokemon_file, _ := colorscripts.ReadFile(path)
+	fmt.Print(string(pokemon_file))
+}
+
+// Show a random pokemon
+func showRandomPokemon(flags flags) {
+	flags.name = pokemon_list[rand.Intn(len(pokemon_list))].Name
+	flags.form = pokemon_map[flags.name].Forms[rand.Intn(len(pokemon_map[flags.name].Forms))]
+	if flags.form == "regular" {
+		flags.form = ""
+	}
+
+	// if shiny flag is not passed, set a small random chance for the pokemon to be shiny
+	if !flags.shiny && rand.Float64() < shinyrate {
+		flags.shiny = true
+	}
+	showPokemonByName(flags)
 }
 
 // Get a boolean flag from a command, and exit if it fails
