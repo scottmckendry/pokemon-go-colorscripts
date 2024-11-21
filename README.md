@@ -3,11 +3,11 @@
 Phoney Badger's Pokemon colorscripts wrapped with Go into a standalone, cross-platform binary.
 All credit goes to Phoney Badger for the original pokemon-colorscripts project. You can find it [here](https://gitlab.com/phoneybadger/pokemon-colorscripts).
 
-![demo](https://gitlab.com/phoneybadger/pokemon-colorscripts/-/raw/main/demo_images/pokemon-colorscripts-demo.gif)
+![demo](https://github.com/user-attachments/assets/acebc087-5bd2-4bf7-93c4-1c8ae0e683b8)
 
 ## 🤔 Why?
 
-You may be wondering why you would use this over the original. Here are a few reasons:
+Why use this over the original?
 
 -   **Performance**: Go is compiled, so it doesn't rely on an interpreter like the original Python script. This generally results in faster execution times.
 -   **Single binary**: Making full use of Go's [`embed`](https://golang.org/pkg/embed/) package, scripts and other assets are embedded directly into the binary. Resulting in a truly portable executable.
