@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v1.0.0...v1.0.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* **ci:** use release please job output as goreleaser trigger ([af082d8](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/af082d8c452daa9d184bfd1c2adb5b4bdb15d33e))
+
 ## 1.0.0 (2024-11-21)
 
 
