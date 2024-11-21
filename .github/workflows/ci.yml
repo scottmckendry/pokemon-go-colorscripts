@@ -18,7 +18,7 @@ jobs:
 
     goreleaser:
         name: Publish
-        if: github.ref_type == 'tag'
+        if: needs.release-please.outputs.release_created == 'true'
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
