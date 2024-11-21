@@ -1,7 +1,7 @@
 package main
 
 import (
-	"pokemon-go-colorscripts/cmd"
+	"github.com/scottmckendry/pokemon-go-colorscripts/cmd"
 )
 
 func main() {

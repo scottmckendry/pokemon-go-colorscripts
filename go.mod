@@ -1,4 +1,4 @@
-module pokemon-go-colorscripts
+module github.com/scottmckendry/pokemon-go-colorscripts
 
 go 1.23.3
 
