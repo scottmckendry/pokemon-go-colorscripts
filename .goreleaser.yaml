@@ -25,6 +25,7 @@ archives:
 
 nfpms:
     - license: MIT
+    - maintainer: "Scott McKendry <me@scottmckendry.tech>"
     - formats:
           - deb
           - rpm
