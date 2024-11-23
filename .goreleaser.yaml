@@ -23,6 +23,14 @@ archives:
           - goos: windows
             format: zip
 
+nfpms:
+    - license: MIT
+    - formats:
+          - deb
+          - rpm
+          - termux.deb
+          - archlinux
+
 changelog:
     disable: true
 
