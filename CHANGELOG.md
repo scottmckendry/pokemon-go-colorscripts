@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.1.1...v0.2.0) (2024-11-23)
+
+
+### Features
+
+* **ci:** add freebsd builds ([87de23e](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/87de23e44f602f94af802dfc94445ca5963ab339))
+
 ## [0.1.1](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.1.0...v0.1.1) (2024-11-21)
 
 
