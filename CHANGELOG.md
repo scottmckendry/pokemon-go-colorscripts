@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.2.0...v0.2.1) (2024-11-23)
+
+
+### Bug Fixes
+
+* **ci:** add missing nfpm maintainer field for goreleaser ([bd6797c](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/bd6797cf34aafc3151dbb35a05ecc6a12a12a83b))
+
 ## [0.2.0](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.1.1...v0.2.0) (2024-11-23)
 
 
