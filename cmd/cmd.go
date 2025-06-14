@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const version = "0.2.0" // x-release-please-version
+const version = "0.3.0" // x-release-please-version
 
 var cmd = &cobra.Command{
 	Use: "pokemon-go-colorscripts",

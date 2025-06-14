@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.0](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.2.0...v0.3.0) (2025-06-14)
+
+
+### Features
+
+* add version flag ([796f392](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/796f392009e01323faf94a9b76b886517fe8a14d))
+* **deps:** update module github.com/spf13/cobra ( v1.8.1 → v1.9.1 ) ([31ad51f](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/31ad51fb82c841dd2889e52b29139497ead0d2af))
+* nixos support via flake ([72c8186](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/72c81869dde481ad13f7089eebc346719153a428))
+
 ## [0.2.0](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.1.1...v0.2.0) (2024-11-23)
 
 

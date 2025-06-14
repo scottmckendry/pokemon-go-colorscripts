@@ -12,11 +12,11 @@
     {
       packages.${system}.default = pkgs.buildGoModule {
         pname = "pat";
-        version = "0.2.0"; # x-release-please-version
+        version = "0.3.0"; # x-release-please-version
         src = pkgs.fetchFromGitHub {
           owner = "scottmckendry";
           repo = "pokemon-go-colorscripts";
-          rev = "v0.2.0"; # x-release-please-version
+          rev = "v0.3.0"; # x-release-please-version
           sha256 = "sha256-jhoP8Z3uaGX3VM24FnxunxudxSbnfK8QhRjyqb3tAjw";
           fetchSubmodules = true;
         };
