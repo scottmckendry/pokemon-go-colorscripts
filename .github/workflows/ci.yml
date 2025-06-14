@@ -36,7 +36,7 @@ jobs:
           sed -i "s/sha256 = \".*\";/sha256 = \"$SRC_HASH\";/" flake.nix
 
           # Get vendor hash
-          sed -i 's/vendorHash = ".*";/vendorHash = "sha256-AAAA";/' flake.nix
+          sed -i 's/vendorHash = ".*";/vendorHash = "";/' flake.nix
           VENDOR_HASH=$(nix build 2>&1 | grep -oP 'got:\s+\Ksha256-[a-zA-Z0-9+/]*' | head -1)
           sed -i "s/vendorHash = \".*\";/vendorHash = \"$VENDOR_HASH\";/" flake.nix
       - name: Commit changes

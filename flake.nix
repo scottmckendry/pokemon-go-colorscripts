@@ -11,7 +11,7 @@
     in
     {
       packages.${system}.default = pkgs.buildGoModule {
-        pname = "pat";
+        pname = "pokemon-go-colorscripts";
         version = "0.3.0"; # x-release-please-version
         src = pkgs.fetchFromGitHub {
           owner = "scottmckendry";
