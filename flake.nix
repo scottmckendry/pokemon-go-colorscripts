@@ -17,10 +17,10 @@
           owner = "scottmckendry";
           repo = "pokemon-go-colorscripts";
           rev = "v0.3.0"; # x-release-please-version
-          sha256 = "sha256-jhoP8Z3uaGX3VM24FnxunxudxSbnfK8QhRjyqb3tAjw";
+          sha256 = "sha256-jz5efvDFo75RsBohYjhDQZ6UrVyFGWZUJKQcdKbQvjE";
           fetchSubmodules = true;
         };
-        vendorHash = "sha256-hocnLCzWN8srQcO3BMNkd2lt0m54Qe7sqAhUxVZlz1k=";
+        vendorHash = "";
         goPackagePath = "github.com/scottmckendry/pat";
         subPackages = [ "." ];
         go = pkgs.go_1_24;
