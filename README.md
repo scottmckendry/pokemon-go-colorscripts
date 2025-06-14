@@ -9,10 +9,10 @@ All credit goes to Phoney Badger for the original pokemon-colorscripts project. 
 
 Why use this over the original?
 
--   **Performance**: Go is compiled, so it doesn't rely on an interpreter like the original Python script. This generally results in faster execution times.
--   **Single binary**: Making full use of Go's [`embed`](https://golang.org/pkg/embed/) package, scripts and other assets are embedded directly into the binary. Resulting in a truly portable executable.
--   **Cross-platform**: This is a standalone binary that works on Windows, macOS, and Linux.
--   **No dependencies**: You don't need to install Python or any other dependencies to run this. Just drop the binary in your PATH and you're good to go.
+- **Performance**: Go is compiled, so it doesn't rely on an interpreter like the original Python script. This generally results in faster execution times.
+- **Single binary**: Making full use of Go's [`embed`](https://golang.org/pkg/embed/) package, scripts and other assets are embedded directly into the binary. Resulting in a truly portable executable.
+- **Cross-platform**: This is a standalone binary that works on Windows, macOS, and Linux.
+- **No dependencies**: You don't need to install Python or any other dependencies to run this. Just drop the binary in your PATH and you're good to go.
 
 ## 📦 Installation
 
@@ -25,6 +25,38 @@ You can download pre-built binaries from the [releases page](https://github.com/
 ```sh
 git clone https://github.com/scottmckendry/pokemon-go-colorscripts --recurse-submodules && cd pokemon-go-colorscripts
 go install .
+```
+
+**Nix**
+
+Add to your flake inputs:
+
+```nix
+{
+  inputs.pokemon-go-colorscripts.url = "github:scottmckendry/pokemon-go-colorscripts";
+}
+```
+
+Then you can use it in your configuration:
+
+```nix
+{
+  inputs,
+  pkgs,
+  ...
+}:
+
+{
+  # Install as a system package
+  environment.systemPackages = [
+    inputs.pokemon-go-colorscripts.packages.${pkgs.system}.default
+  ];
+
+  # OR with home-manager
+  home.packages = [
+    inputs.pokemon-go-colorscripts.packages.${pkgs.system}.default
+  ];
+}
 ```
 
 ## 🚀 Usage
