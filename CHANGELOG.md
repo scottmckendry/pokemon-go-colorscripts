@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.3.0...v0.3.1) (2025-06-14)
+
+
+### Bug Fixes
+
+* **nix:** missing vendor hash in v0.3.0 ([4860f86](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/4860f866747a5cb4420f2a21adfa4388179e7889))
+
 ## [0.3.0](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.2.0...v0.3.0) (2025-06-14)
 
 
