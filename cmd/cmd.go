@@ -10,6 +10,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const version = "0.2.0" // x-release-please-version
+
 var cmd = &cobra.Command{
 	Use: "pokemon-go-colorscripts",
 
@@ -22,6 +24,11 @@ var cmd = &cobra.Command{
 			shiny:   mustGetBool(cmd, "shiny"),
 			big:     mustGetBool(cmd, "big"),
 			random:  mustGetBool(cmd, "random"),
+			version: mustGetBool(cmd, "version"),
+		}
+
+		if flags.version {
+			fmt.Printf("pokemon-go-colorscripts version %s\n", version)
 		}
 
 		loadPokemon()
@@ -57,6 +64,7 @@ func init() {
 	cmd.Flags().BoolP("shiny", "s", false, "Show the shiny version of a pokemon instead")
 	cmd.Flags().BoolP("big", "b", false, "Show a larger version of the sprite")
 	cmd.Flags().BoolP("random", "r", false, "display a random pokemon")
+	cmd.Flags().BoolP("version", "v", false, "display version information")
 	cmd.Flags().
 		StringP("name", "n", "", "Select a pokemon by name. Generally spelled like in the games.a few exceptions are nidoran-f, nidoran-m, mr-mime, farfetchd, flabebe type-null etc. Perhaps grep the output of --list if in doubt.")
 }

@@ -15,6 +15,7 @@ type flags struct {
 	shiny   bool
 	big     bool
 	random  bool
+	version bool
 }
 
 var pokemon_map map[string]pokemon

@@ -14,7 +14,6 @@ jobs:
               id: release-please
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  release-type: go
 
     goreleaser:
         name: Publish
