@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.3.1...v0.4.0) (2025-09-06)
+
+
+### Features
+
+* **deps:** update module github.com/spf13/cobra ( v1.9.1 → v1.10.1 ) ([#22](https://github.com/scottmckendry/pokemon-go-colorscripts/issues/22)) ([f086074](https://github.com/scottmckendry/pokemon-go-colorscripts/commit/f08607449760dcbe5f035f3fa1d3e7539a5fa5f9))
+
 ## [0.3.1](https://github.com/scottmckendry/pokemon-go-colorscripts/compare/v0.3.0...v0.3.1) (2025-06-14)
 
 
