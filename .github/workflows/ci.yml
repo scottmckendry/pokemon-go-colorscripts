@@ -26,7 +26,7 @@ jobs:
           fetch-depth: 0
           submodules: true
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
+        uses: DeterminateSystems/nix-installer-action@9383ce2bf08796b65508822f5982f49151badc4e # main
       - name: Update hashes
         id: update-hashes
         run: |
